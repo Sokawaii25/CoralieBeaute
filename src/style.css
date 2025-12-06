@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#FFF5F5] text-neutral;
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-center mb-8 font-serif;
+  }
+  
+  .service-card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300;
+  }
+  
+  .price-table {
+    @apply bg-white rounded-lg shadow-md p-6;
+  }
+}
