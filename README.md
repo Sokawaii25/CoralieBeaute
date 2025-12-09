@@ -57,6 +57,8 @@ npm run preview
 ```
 CoralieBeauté/
 ├── public/              # Fichiers statiques
+│   └── assets/
+│       └── images/      # Images du site (logo, icônes, photos)
 ├── src/
 │   ├── App.vue         # Composant principal (single-page)
 │   ├── main.js         # Point d'entrée de l'application
@@ -81,13 +83,6 @@ Le site est entièrement responsive et s'adapte à tous les écrans :
 - Mobile (< 768px)
 - Tablette (768px - 1024px)
 - Desktop (> 1024px)
-
-## 📞 Contact
-
-- **Téléphone** : 07.61.58.18.12
-- **Email** : coraliebribet@icloud.com
-- **Localisation** : 40100 Dax
-- **Instagram** : @coraliebeaute_
 
 ## 📄 License
 
