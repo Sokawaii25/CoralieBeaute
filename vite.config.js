@@ -5,8 +5,8 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],/* 
   server: {
-    allowedHosts: [
-      'xxx'
-    ],
+    allowedHosts: process.env.VITE_ALLOWED_HOSTS
+      ? process.env.VITE_ALLOWED_HOSTS.split(',').map(h => h.trim())
+      : [],
   }, */
 })
