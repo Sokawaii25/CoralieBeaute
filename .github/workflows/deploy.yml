@@ -25,12 +25,10 @@ jobs:
         run: npm run build
 
       - name: Deploy to SSH server
-        uses: trendyminds/github-actions-rsync@master
+        uses: ./
         with:
-          RSYNC_OPTIONS: -avzr --delete
-          RSYNC_TARGET: ${{secrets.BUILD_TARGET_PATH}}
-          RSYNC_SOURCE: dist/
-        env:
-          SSH_PRIVATE_KEY: ${{secrets.SSH_KEY}}
-          SSH_USERNAME: ${{secrets.SSH_USER}}
-          SSH_HOSTNAME: ${{secrets.SSH_HOST}}
+          local: dist
+          remote: ${{secrets.BUILD_TARGET_PATH}}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          privateKey: ${{ secrets.SSH_KEY}}
