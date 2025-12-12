@@ -385,32 +385,32 @@ import { ref } from 'vue'
 const services = ref([
   {
     title: 'Épilations visages/corps',
-    image: 'assets/images/services/epilation.jpg',
+    image: '/assets/images/services/epilation.jpg',
   },
   {
     title: 'Maquillages',
-    image: 'assets/images/services/maquillage.jpg',
+    image: '/assets/images/services/maquillage.jpg',
   },
   {
     title: 'Beauté du regard',
     subtitle: '(rehaussements, teintures)',
-    image: 'assets/images/services/beaute_regard.jpg',
+    image: '/assets/images/services/beaute_regard.jpg',
   },
   {
     title: 'Soins visages',
-    image: 'assets/images/services/soins_visage.jpg',
+    image: '/assets/images/services/soins_visage.jpg',
   },
   {
     title: 'Massages corps',
-    image: 'assets/images/services/massages_corps.jpg',
+    image: '/assets/images/services/massages_corps.jpg',
   },
   {
     title: 'Beauté mains/pieds',
-    image: 'assets/images/services/beaute_mains_pieds.jpg',
+    image: '/assets/images/services/beaute_mains_pieds.jpg',
   },
   {
     title: 'Onglerie',
-    image: 'assets/images/services/onglerie.jpg',
+    image: '/assets/images/services/onglerie.jpg',
   },
 ])
 
