@@ -8,6 +8,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      CI: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -25,7 +27,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to SSH server
-        uses: ./
+        uses: garygrossgarten/github-action-scp@release
         with:
           local: dist
           remote: ${{secrets.BUILD_TARGET_PATH}}
