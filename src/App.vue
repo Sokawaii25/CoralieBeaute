@@ -192,6 +192,23 @@
               </ul>
             </div>
 
+            <!-- Forfaits epilations corps -->
+            <div class="price-table">
+              <h3 class="text-xl font-bold mb-4 border-b-2 border-pink-medium pb-2">Forfaits épilations corps</h3>
+              <ul class="space-y-2">
+                <li class="flex justify-between"><span>• ½ jambes + maillot classique ou aisselles (30min)</span><span class="font-semibold">22€</span></li>
+                <li class="flex justify-between"><span>• ½ jambes + maillot classique + aisselles (45min)</span><span class="font-semibold">31€</span></li>
+                <li class="flex justify-between"><span>• ½ jambes + maillot brésilien/échancré + aisselles (45min)</span><span class="font-semibold">39€</span></li>
+                <li class="flex justify-between"><span>• ½ jambes + maillot semi-intégral + aisselles (1h)</span><span class="font-semibold">44€</span></li>
+                <li class="flex justify-between"><span>• ½ jambes + maillot intégral + aisselles (1h)</span><span class="font-semibold">46€</span></li>
+                <li class="flex justify-between"><span>• Jambes complètes + maillot classique ou aisselles (45min)</span><span class="font-semibold">31€</span></li>
+                <li class="flex justify-between"><span>• Jambes complètes + maillot classique + aisselles (1h)</span><span class="font-semibold">37€</span></li>
+                <li class="flex justify-between"><span>• Jambes complètes + maillot brésilien/échancré + aisselles (1h)</span><span class="font-semibold">46€</span></li>
+                <li class="flex justify-between"><span>• Jambes complètes + maillot semi-intégral + aisselles (1h15)</span><span class="font-semibold">51€</span></li>
+                <li class="flex justify-between"><span>• Jambes complètes + maillot intégral + aisselles (1h15)</span><span class="font-semibold">55€</span></li>
+              </ul>
+            </div>
+
             <!-- Massages corps -->
             <div class="price-table">
               <h3 class="text-xl font-bold mb-4 border-b-2 border-pink-medium pb-2">Massages corps</h3>
@@ -211,44 +228,10 @@
                 <li class="flex justify-between"><span>• Traitement anti-âge (1h15)</span><span class="font-semibold">62€</span></li>
               </ul>
             </div>
-
-            <!-- Nail art -->
-            <div class="price-table">
-              <h3 class="text-xl font-bold mb-4 border-b-2 border-pink-medium pb-2">Nail art</h3>
-              <ul class="space-y-2">
-                <li class="flex justify-between"><span>• French 10 ongles</span><span class="font-semibold">+10€</span></li>
-                <li class="flex justify-between"><span>• French / ongle</span><span class="font-semibold">+1€</span></li>
-                <li class="flex justify-between"><span>• Baby-boomer 10 ongles</span><span class="font-semibold">+10€</span></li>
-                <li class="flex justify-between"><span>• Baby-boomer / ongle</span><span class="font-semibold">+1€</span></li>
-                <li class="flex justify-between"><span>• Paillettes & strass</span><span class="font-semibold">Sur devis</span></li>
-                <li class="flex justify-between"><span>• Nail art simple</span><span class="font-semibold">+2€/doigt</span></li>
-                <li class="flex justify-between"><span>• Nail art complexe</span><span class="font-semibold">Sur devis</span></li>
-                <li class="flex justify-between"><span>• Ongle cassé < 1 semaine</span><span class="font-semibold">Gratuit</span></li>
-                <li class="flex justify-between"><span>• Ongle cassé > 1 semaine</span><span class="font-semibold">+2€/doigt</span></li>
-              </ul>
-              <p class="text-sm text-center italic mt-4">Nail art sur devis, envoyer en photo pour définir le prix</p>
-            </div>
           </div>
 
           <!-- Column 2 -->
           <div class="space-y-8">
-            <!-- Forfaits epilations corps -->
-            <div class="price-table">
-              <h3 class="text-xl font-bold mb-4 border-b-2 border-pink-medium pb-2">Forfaits épilations corps</h3>
-              <ul class="space-y-2">
-                <li class="flex justify-between"><span>• ½ jambes + maillot classique ou aisselles (30min)</span><span class="font-semibold">22€</span></li>
-                <li class="flex justify-between"><span>• ½ jambes + maillot classique + aisselles (45min)</span><span class="font-semibold">31€</span></li>
-                <li class="flex justify-between"><span>• ½ jambes + maillot brésilien/échancré + aisselles (45min)</span><span class="font-semibold">39€</span></li>
-                <li class="flex justify-between"><span>• ½ jambes + maillot semi-intégral + aisselles (1h)</span><span class="font-semibold">44€</span></li>
-                <li class="flex justify-between"><span>• ½ jambes + maillot intégral + aisselles (1h)</span><span class="font-semibold">46€</span></li>
-                <li class="flex justify-between"><span>• Jambes complètes + maillot classique ou aisselles (45min)</span><span class="font-semibold">31€</span></li>
-                <li class="flex justify-between"><span>• Jambes complètes + maillot classique + aisselles (1h)</span><span class="font-semibold">37€</span></li>
-                <li class="flex justify-between"><span>• Jambes complètes + maillot brésilien/échancré + aisselles (1h)</span><span class="font-semibold">46€</span></li>
-                <li class="flex justify-between"><span>• Jambes complètes + maillot semi-intégral + aisselles (1h15)</span><span class="font-semibold">51€</span></li>
-                <li class="flex justify-between"><span>• Jambes complètes + maillot intégral + aisselles (1h15)</span><span class="font-semibold">55€</span></li>
-              </ul>
-            </div>
-
             <!-- Beaute du regard -->
             <div class="price-table">
               <h3 class="text-xl font-bold mb-4 border-b-2 border-pink-medium pb-2">Beauté du regard</h3>
@@ -310,6 +293,23 @@
                 <li class="flex justify-between"><span>• Dépose gel (45min)</span><span class="font-semibold">17€</span></li>
                 <li class="flex justify-between"><span>• Dépose capsules américaines (30min)</span><span class="font-semibold">13€</span></li>
               </ul>
+            </div>
+
+            <!-- Nail art -->
+            <div class="price-table">
+              <h3 class="text-xl font-bold mb-4 border-b-2 border-pink-medium pb-2">Nail art</h3>
+              <ul class="space-y-2">
+                <li class="flex justify-between"><span>• French 10 ongles</span><span class="font-semibold">+10€</span></li>
+                <li class="flex justify-between"><span>• French / ongle</span><span class="font-semibold">+1€</span></li>
+                <li class="flex justify-between"><span>• Baby-boomer 10 ongles</span><span class="font-semibold">+10€</span></li>
+                <li class="flex justify-between"><span>• Baby-boomer / ongle</span><span class="font-semibold">+1€</span></li>
+                <li class="flex justify-between"><span>• Paillettes & strass</span><span class="font-semibold">Sur devis</span></li>
+                <li class="flex justify-between"><span>• Nail art simple</span><span class="font-semibold">+2€/doigt</span></li>
+                <li class="flex justify-between"><span>• Nail art complexe</span><span class="font-semibold">Sur devis</span></li>
+                <li class="flex justify-between"><span>• Ongle cassé < 1 semaine</span><span class="font-semibold">Gratuit</span></li>
+                <li class="flex justify-between"><span>• Ongle cassé > 1 semaine</span><span class="font-semibold">+2€/doigt</span></li>
+              </ul>
+              <p class="text-sm text-center italic mt-4">Nail art sur devis, envoyer en photo pour définir le prix</p>
             </div>
           </div>
         </div>
