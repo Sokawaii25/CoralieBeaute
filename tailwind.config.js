@@ -14,7 +14,7 @@ export default {
         'pink-medium': '#FFC0CB',
       },
       fontFamily: {
-        'serif': ['Georgia', 'serif'],
+        'serif': ['Georgia'],
       },
     },
   },
