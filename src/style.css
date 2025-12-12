@@ -10,7 +10,7 @@
 
 @layer components {
   .section-title {
-    @apply text-3xl md:text-4xl font-bold text-center mb-8 font-serif;
+    @apply text-3xl md:text-4xl font-bold text-center mb-8;
   }
   
   .service-card {
