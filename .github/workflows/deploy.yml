@@ -25,13 +25,12 @@ jobs:
         run: npm run build
 
       - name: Deploy to SSH server
-        uses: appleboy/scp-action@v0.1.7
+        uses: trendyminds/github-actions-rsync@master
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          source: "dist/*"
-          target: ${{ secrets.BUILD_TARGET_PATH }}
-          strip_components: 1
-          # overwrite: true
+          RSYNC_OPTIONS: -avzr --delete --exclude node_modules --exclude '.git*'
+          RSYNC_TARGET: ${{secrets.BUILD_TARGET_PATH}}
+          RSYNC_SOURCE: dist/
+        env:
+          SSH_PRIVATE_KEY: ${{secrets.SSH_KEY}}
+          SSH_USERNAME: ${{secrets.SSH_USER}}
+          SSH_HOSTNAME: ${{secrets.SSH_HOST}}
