@@ -27,7 +27,7 @@ jobs:
       - name: Deploy to SSH server
         uses: trendyminds/github-actions-rsync@master
         with:
-          RSYNC_OPTIONS: -avzr --delete --exclude node_modules --exclude '.git*'
+          RSYNC_OPTIONS: -avzr --delete'
           RSYNC_TARGET: ${{secrets.BUILD_TARGET_PATH}}
           RSYNC_SOURCE: dist/
         env:
