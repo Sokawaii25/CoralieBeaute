@@ -56,7 +56,7 @@
 
       <!-- Services Section -->
       <section id="services" class="mb-20">
-        <h2 class="section-title">Mes services :</h2>
+        <h2 class="section-title">Mes services</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div v-for="service in services" :key="service.title" class="service-card">
             <img :src="service.image" :alt="service.title" class="w-full h-48 object-cover">
@@ -364,11 +364,10 @@
               <a href="https://www.instagram.com/coraliebeaute_" target="_blank" class="hover:text-pink-medium transition-colors">
                 <span class="text-2xl">📷</span> Instagram
               </a>
-              <a href="https://www.facebook.com/coraliebeaute" target="_blank" class="hover:text-pink-medium transition-colors">
+              <a href="https://www.facebook.com/people/Coraliebribet_/100068964812601/" target="_blank" class="hover:text-pink-medium transition-colors">
                 <span class="text-2xl">👥</span> Facebook
               </a>
             </div>
-            <p class="text-gray-300 mt-4">coraliebeaute_</p>
           </div>
         </div>
         
