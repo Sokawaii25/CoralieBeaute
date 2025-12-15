@@ -547,10 +547,10 @@
                   <span>• Nail art complexe</span><span class="font-semibold">Sur devis</span>
                 </li>
                 <li class="flex justify-between">
-                  <span>• Ongle cassé < 1 semaine</span><span class="font-semibold">Gratuit</span>
+                  <span>• Ongle cassé &lt; 1 semaine</span><span class="font-semibold">Gratuit</span>
                 </li>
                 <li class="flex justify-between">
-                  <span>• Ongle cassé > 1 semaine</span><span class="font-semibold">+2€/doigt</span>
+                  <span>• Ongle cassé &gt; 1 semaine</span><span class="font-semibold">+2€/doigt</span>
                 </li>
               </ul>
               <p class="text-sm text-center italic mt-4">
