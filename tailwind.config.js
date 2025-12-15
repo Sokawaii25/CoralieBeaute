@@ -12,6 +12,7 @@ export default {
         'cream': '#FFF5F5',
         'pink-soft': '#FFE4E6',
         'pink-medium': '#FFC0CB',
+        'pink-dark': '#E91E63',
       },
       fontFamily: {
         'serif': ['Georgia'],
