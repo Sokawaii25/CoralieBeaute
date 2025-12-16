@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <footer class="bg-gradient-to-br to-[#E91E63] from-pink-medium text-white py-12">
+  <footer class="bg-neutral text-white py-12">
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
         <div>

@@ -194,7 +194,7 @@ const services = ref([
                 <span>• Sourcils entretien (15min)</span><span class="font-semibold">9€</span>
               </li>
               <li class="flex justify-between">
-                <span>• Lèvres (15min)</span><span class="font-semibold">7€</span>
+                <span>• Lèvres (15min)</span><span class="font-semibold">8€</span>
               </li>
               <li class="flex justify-between">
                 <span>• Menton (15min)</span><span class="font-semibold">8€</span>
