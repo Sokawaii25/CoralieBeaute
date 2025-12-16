@@ -102,7 +102,7 @@ onUnmounted(() => {
             class="text-center"
           >
             <img
-              src="/assets/images/logo.svg"
+              src="@/assets/images/logo.svg"
               alt="Coralie Beauté Logo"
               class="mx-auto h-12 w-auto mb-1"
             >
