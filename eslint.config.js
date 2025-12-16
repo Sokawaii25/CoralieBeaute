@@ -6,15 +6,17 @@ export default [
   // js.configs.recommended,
   ...pluginVue.configs['flat/recommended'],
   {
+    languageOptions: {
+      sourceType: 'module',
+      ecmaVersion: 'latest',
+      globals: {
+        ...globals.browser,
+        ...globals.node
+      }
+    },
     rules: {
       // override/add rules settings here, such as:
       // 'vue/no-unused-vars': 'error'
-    },
-    languageOptions: {
-      sourceType: 'module',
-      globals: {
-        ...globals.browser
-      }
     }
   }
 ]

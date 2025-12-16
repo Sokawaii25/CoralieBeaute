@@ -61,6 +61,8 @@ CoralieBeauté/
 │       └── images/      # Images du site (logo, icônes, photos)
 ├── src/
 │   ├── App.vue         # Composant principal (single-page)
+│   ├── components/     # Composants Vue réutilisables
+|   ├── views/          # Vues principales
 │   ├── main.js         # Point d'entrée de l'application
 │   └── style.css       # Styles globaux avec Tailwind
 ├── index.html          # Page HTML principale
@@ -75,6 +77,7 @@ CoralieBeauté/
 - Cream: `#FFF5F5` (fond principal)
 - Pink Soft: `#FFE4E6` (accents)
 - Pink Medium: `#FFC0CB` (bordures et éléments)
+- Pink Dark: `#E91E63` (boutons et appels à l'action)
 - Neutral: `#2a2a2a` (texte)
 
 ## 📱 Responsive Design

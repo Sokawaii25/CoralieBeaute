@@ -5,32 +5,32 @@ import GoToTopButton from '@/components/GoToTopButton.vue'
 const services = ref([
   {
     title: 'Épilations visages/corps',
-    image: '/assets/images/services/epilation.jpg',
+    image: new URL('../assets/images/services/epilation.jpg', import.meta.url).href,
   },
   {
     title: 'Maquillages',
-    image: '/assets/images/services/maquillage.jpg',
+    image: new URL('../assets/images/services/maquillage.jpg', import.meta.url).href,
   },
   {
     title: 'Beauté du regard',
     subtitle: '(réhaussements, teintures)',
-    image: '/assets/images/services/beaute_regard.jpg',
+    image: new URL('../assets/images/services/beaute_regard.jpg', import.meta.url).href,
   },
   {
     title: 'Soins visages',
-    image: '/assets/images/services/soins_visage.jpg',
+    image: new URL('../assets/images/services/soins_visage.jpg', import.meta.url).href,
   },
   {
     title: 'Massages corps',
-    image: '/assets/images/services/massages_corps.jpg',
+    image: new URL('../assets/images/services/massages_corps.jpg', import.meta.url).href,
   },
   {
     title: 'Beauté mains/pieds',
-    image: '/assets/images/services/beaute_mains_pieds.jpg',
+    image: new URL('../assets/images/services/beaute_mains_pieds.jpg', import.meta.url).href,
   },
   {
     title: 'Onglerie',
-    image: '/assets/images/services/onglerie.jpg',
+    image: new URL('../assets/images/services/onglerie.jpg', import.meta.url).href,
   },
 ])
 </script>
@@ -80,7 +80,7 @@ const services = ref([
         <div>
           <div class="text-center mb-6">
             <img
-              src="/assets/images/logo.svg"
+              src="@/assets/images/logo.svg"
               alt="Coralie Beauté Logo"
               class="mx-auto h-16 w-auto mb-1"
             >
@@ -148,7 +148,7 @@ const services = ref([
         <div class="flex justify-center">
           <div class="w-full max-w-md">
             <img
-              src="/assets/images/presentation.jpg" 
+              src="@/assets/images/presentation.jpg" 
               alt="Coralie BRIBET" 
               class="rounded-lg shadow-xl w-full"
             >
