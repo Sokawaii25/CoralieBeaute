@@ -36,4 +36,3 @@ jobs:
           source: "dist/*"
           target: ${{ secrets.BUILD_TARGET_PATH }}
           overwrite: true
-          rm: true
