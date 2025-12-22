@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import MentionsLegalesView from '../views/MentionsLegalesView.vue'
+import NotFoundView from '../views/NotFoundView.vue'
 
 const routes = [
   {
@@ -12,7 +13,18 @@ const routes = [
     path: '/mentions-legales',
     name: 'mentions-legales',
     component: MentionsLegalesView
-  }
+  },
+  {
+    path: '/404',
+    name: 'not-found',
+    component: NotFoundView
+  },  
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: {
+      name: 'not-found'
+    }
+  },
 ]
 
 const router = createRouter({
