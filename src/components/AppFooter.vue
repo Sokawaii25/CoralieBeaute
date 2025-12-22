@@ -1,5 +1,15 @@
 <script setup>
-// No specific script logic needed for the footer at this time
+import { useMatomoTracking } from '@/composables/useMatomo'
+
+const { trackContact, trackSocialMedia } = useMatomoTracking()
+
+const handleEmailClick = () => {
+  trackContact('Email', 'coraliebribet@icloud.com')
+}
+
+const handleSocialClick = (platform) => {
+  trackSocialMedia(platform)
+}
 </script>
 
 <template>
@@ -46,6 +56,7 @@
             <a
               href="mailto:coraliebribet@icloud.com"
               class="underline hover:text-pink-medium transition-colors"
+              @click="handleEmailClick"
             >
               coraliebribet@icloud.com
             </a>
@@ -61,6 +72,7 @@
               href="https://www.tiktok.com/@coraliebeaute_"
               target="_blank"
               class="flex items-center hover:text-pink-medium transition-colors"
+              @click="handleSocialClick('TikTok')"
             >
               <svg
                 class="w-6 h-6 mr-2"
@@ -75,6 +87,7 @@
               href="https://www.instagram.com/coraliebeaute_"
               target="_blank"
               class="flex items-center hover:text-pink-medium transition-colors"
+              @click="handleSocialClick('Instagram')"
             >
               <svg
                 class="w-6 h-6 mr-2"
@@ -89,6 +102,7 @@
               href="https://www.facebook.com/people/Coraliebribet_/100068964812601/"
               target="_blank"
               class="flex items-center hover:text-pink-medium transition-colors"
+              @click="handleSocialClick('Facebook')"
             >
               <svg
                 class="w-6 h-6 mr-2"

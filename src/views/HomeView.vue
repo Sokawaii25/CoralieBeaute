@@ -1,6 +1,13 @@
 <script setup>
 import { ref } from 'vue'
 import GoToTopButton from '@/components/GoToTopButton.vue'
+import { useMatomoTracking } from '@/composables/useMatomo'
+
+const { trackContact } = useMatomoTracking()
+
+const handleEmailClick = () => {
+  trackContact('Email', 'coraliebribet@icloud.com')
+}
 
 const services = ref([
   {
@@ -524,6 +531,7 @@ const services = ref([
             <a
               href="mailto:coraliebribet@icloud.com"
               class="underline hover:text-pink-medium transition-colors"
+              @click="handleEmailClick"
             >coraliebribet@icloud.com</a>
           </span>
         </div>

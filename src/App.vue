@@ -1,6 +1,7 @@
 <script setup>
 import Header from './components/AppHeader.vue'
 import Footer from './components/AppFooter.vue'
+import ConsentBanner from './components/ConsentBanner.vue'
 </script>
 
 <template>
@@ -10,6 +11,8 @@ import Footer from './components/AppFooter.vue'
     <RouterView />
     
     <Footer />
+    
+    <ConsentBanner />
   </div>
 </template>
 
