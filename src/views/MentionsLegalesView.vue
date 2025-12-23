@@ -1,5 +1,31 @@
 <script setup>
-import GoToTopButton from '@/components/GoToTopButton.vue';
+import { ref } from 'vue'
+import GoToTopButton from '@/components/GoToTopButton.vue'
+
+const currentConsent = ref(localStorage.getItem('matomo-consent'))
+const showMessage = ref(false)
+
+const updateConsent = (consent) => {
+  if (consent) {
+    if (window._paq) {
+      window._paq.push(['setConsentGiven'])
+      window._paq.push(['setCookieConsentGiven'])
+      window._paq.push(['rememberConsentGiven', 8760]) // 365 * 24 hours
+      window._paq.push(['rememberCookieConsentGiven', 8760])
+    }
+    localStorage.setItem('matomo-consent', 'true')
+    currentConsent.value = 'true'
+  } else {
+    if (window._paq) {
+      window._paq.push(['forgetConsentGiven'])
+      window._paq.push(['forgetCookieConsentGiven'])
+    }
+    localStorage.setItem('matomo-consent', 'false')
+    currentConsent.value = 'false'
+  }
+  showMessage.value = true
+  setTimeout(() => showMessage.value = false, 3000)
+}
 </script>
 
 <template>
@@ -85,13 +111,68 @@ import GoToTopButton from '@/components/GoToTopButton.vue';
       <!-- Cookies -->
       <section class="mb-8 bg-white rounded-lg shadow-md p-6">
         <h2 class="text-2xl font-bold mb-4">
-          Cookies
+          Cookies et statistiques
         </h2>
-        <p>
-          Ce site n'utilise pas de cookies de traçage. Seuls des cookies techniques nécessaires au 
-          bon fonctionnement du site peuvent être utilisés. Ces cookies ne collectent aucune donnée 
-          personnelle et ne nécessitent pas de consentement préalable.
+        <p class="mb-4">
+          Ce site utilise Matomo, une solution d'analyse web respectueuse de la vie privée, pour 
+          comprendre comment les visiteurs utilisent notre site et améliorer votre expérience.
         </p>
+        
+        <h3 class="text-lg font-semibold mb-2">
+          Données collectées
+        </h3>
+        <ul class="list-disc list-inside mb-4 space-y-1">
+          <li>Pages visitées et temps passé sur chaque page</li>
+          <li>Provenance des visiteurs (moteur de recherche, lien direct, etc.)</li>
+          <li>Type d'appareil et navigateur utilisé</li>
+          <li>Interactions avec les liens et boutons</li>
+        </ul>
+
+        <h3 class="text-lg font-semibold mb-2">
+          Protection de vos données
+        </h3>
+        <ul class="list-disc list-inside mb-4 space-y-1">
+          <li>Vos données sont hébergées en France par Informagic'Landes</li>
+          <li>Votre adresse IP est anonymisée</li>
+          <li>Aucune donnée n'est partagée avec des tiers</li>
+          <li>Les données sont conservées pendant 13 mois maximum</li>
+        </ul>
+
+        <div class="bg-pink-soft p-4 rounded-lg">
+          <h3 class="text-lg font-semibold mb-3">
+            Gérer vos préférences
+          </h3>
+          <p class="mb-3">
+            <strong>Statut actuel :</strong> 
+            <span v-if="currentConsent === 'true'" class="text-green-600 font-semibold">✓ Accepté</span>
+            <span v-else-if="currentConsent === 'false'" class="text-red-600 font-semibold">✗ Refusé</span>
+            <span v-else class="text-gray-600 font-semibold">Pas encore défini</span>
+          </p>
+          
+          <div class="flex gap-3">
+            <button
+              class="btn bg-pink-medium hover:bg-pink-dark text-white btn-sm"
+              @click="updateConsent(true)"
+            >
+              Accepter le suivi
+            </button>
+            <button
+              class="btn btn-outline btn-sm"
+              @click="updateConsent(false)"
+            >
+              Refuser le suivi
+            </button>
+          </div>
+
+          <Transition name="fade">
+            <div
+              v-if="showMessage"
+              class="mt-3 p-2 bg-green-100 text-green-800 rounded"
+            >
+              ✓ Vos préférences ont été enregistrées
+            </div>
+          </Transition>
+        </div>
       </section>
 
       <!-- Credits -->
@@ -137,5 +218,13 @@ import GoToTopButton from '@/components/GoToTopButton.vue';
 </template>
 
 <style scoped>
-/*  */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>

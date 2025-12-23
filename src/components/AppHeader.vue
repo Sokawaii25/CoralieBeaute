@@ -1,13 +1,19 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useMatomoTracking } from '@/composables/useMatomo'
 
 const router = useRouter()
 const isHeaderVisible = ref(true)
 let lastScrollY = 0
 let ticking = false
 
+const { trackNavigation } = useMatomoTracking()
+
 const handleNavigation = (sectionId) => {
+  // Track navigation click
+  trackNavigation(sectionId)
+  
   // If not on home page, navigate to home first
   if (router.currentRoute.value.path !== '/') {
     router.push('/').then(() => {
