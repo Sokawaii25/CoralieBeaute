@@ -61,8 +61,11 @@ CoralieBeauté/
 │       └── images/      # Images du site (logo, icônes, photos)
 ├── src/
 │   ├── App.vue         # Composant principal (single-page)
+│	├── assets/         # Ressources (images, polices, etc.)
 │   ├── components/     # Composants Vue réutilisables
-|   ├── views/          # Vues principales
+│	├── composables/    # Composables Vue 
+│	├── router/         # Configuration du routeur Vue
+│   ├── views/          # Vues principales
 │   ├── main.js         # Point d'entrée de l'application
 │   └── style.css       # Styles globaux avec Tailwind
 ├── index.html          # Page HTML principale
