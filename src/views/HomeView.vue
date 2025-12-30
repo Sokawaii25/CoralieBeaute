@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import GoToTopButton from '@/components/GoToTopButton.vue'
 import { useMatomoTracking } from '@/composables/useMatomo'
 
@@ -13,33 +13,241 @@ const services = ref([
   {
     title: 'Épilations visages/corps',
     image: new URL('../assets/images/services/epilation.jpg', import.meta.url).href,
+    pricesAnchor: 'epilation-visage-corps',
   },
   {
     title: 'Maquillages',
+    pricesAnchor: 'maquillage',
     image: new URL('../assets/images/services/maquillage.jpg', import.meta.url).href,
   },
   {
     title: 'Beauté du regard',
     subtitle: '(réhaussements, teintures)',
+    pricesAnchor: 'beaute-regard',
     image: new URL('../assets/images/services/beaute_regard.jpg', import.meta.url).href,
   },
   {
     title: 'Soins visages',
+    pricesAnchor: 'soin-visage',
     image: new URL('../assets/images/services/soins_visage.jpg', import.meta.url).href,
   },
   {
     title: 'Massages corps',
+    pricesAnchor: 'massage-corps',
     image: new URL('../assets/images/services/massages_corps.jpg', import.meta.url).href,
   },
   {
     title: 'Beauté mains/pieds',
+    pricesAnchor: 'beaute-mains-pieds',
     image: new URL('../assets/images/services/beaute_mains_pieds.jpg', import.meta.url).href,
   },
   {
     title: 'Onglerie',
+    pricesAnchor: 'onglerie',
     image: new URL('../assets/images/services/onglerie.jpg', import.meta.url).href,
   },
 ])
+
+const prices = ref({
+  column_1: [
+    {
+      category: 'Épilations visage',
+      priceAnchor: 'epilation-visage-corps',
+      items: [
+        { name: 'Création ligne sourcils (20min)', price: 11, reduced_price: 8 },
+        { name: 'Sourcils entretien (15min)', price: 9, reduced_price: 'Gratuit !' },
+        { name: 'Lèvres (15min)', price: 8, reduced_price: 0 },
+        { name: 'Menton (15min)', price: 8, reduced_price: 0 },
+      ],
+    },
+    {
+      category: 'Forfaits épilations visage',
+      items: [
+        { name: 'Sourcils + lèvres (25min)', price: 15, reduced_price: 0 },
+        { name: 'Visage complet (30min)', price: 22, reduced_price: 0 },
+      ],
+    },
+    {
+      category: 'Épilations zone unique corps',
+      items: [
+        { name: 'Demi-bras (20min)', price: 14, reduced_price: 0 },
+        { name: 'Bras entiers (30min)', price: 17, reduced_price: 0 },
+        { name: 'Aisselles (15min)', price: 10, reduced_price: 0 },
+        { name: 'Demi-jambes (20min)', price: 17, reduced_price: 0 },
+        { name: 'Jambes (35min)', price: 21, reduced_price: 0 },
+        { name: 'Jambe complètes (30min)', price: 25, reduced_price: 0 },
+        { name: 'Cuisses (30min)', price: 19, reduced_price: 0 },
+        { name: 'Maillot classique (15min)', price: 10, reduced_price: 0 },
+        { name: 'Maillot brésilien/échancré (20min)', price: 15, reduced_price: 0 },
+        { name: 'Maillot semi-intégral (25min)', price: 23, reduced_price: 0 },
+        { name: 'Maillot intégral (30min)', price: 25, reduced_price: 0 },
+        { name: 'Interfessier (10min)', price: 7, reduced_price: 0 },
+        { name: 'Fesses (20min)', price: 12, reduced_price: 0 },
+      ],
+    },
+    {
+      category: 'Forfaits épilations corps',
+      items: [
+        { name: '½ jambes + maillot classique ou aisselles (30min)', price: 22, reduced_price: 0 },
+        { name: '½ jambes + maillot classique + aisselles (45min)', price: 31, reduced_price: 0 },
+        { name: '½ jambes + maillot brésilien/échancré + aisselles (45min)', price: 39, reduced_price: 0 },
+        { name: '½ jambes + maillot semi-intégral + aisselles (1h)', price: 44, reduced_price: 0 },
+        { name: '½ jambes + maillot intégral + aisselles (1h)', price: 46, reduced_price: 0 },
+        { name: 'Jambes complètes + maillot classique ou aisselles (45min)', price: 31, reduced_price: 0 },
+        { name: 'Jambes complètes + maillot classique + aisselles (1h)', price: 37, reduced_price: 0 },
+        { name: 'Jambes complètes + maillot brésilien/échancré + aisselles (1h)', price: 46, reduced_price: 0 },
+        { name: 'Jambes complètes + maillot semi-intégral + aisselles (1h15)', price: 51, reduced_price: 0 },
+        { name: 'Jambes complètes + maillot intégral + aisselles (1h15)', price: 55, reduced_price: 0 },
+      ],
+    },
+    {
+      category: 'Massages corps',
+      priceAnchor: 'massage-corps',
+      items: [
+        { name: 'Modelage ciblé 1 zone (30min)', price: 30, reduced_price: 0 },
+        { name: 'Modelage ciblé 2 zones ou corps complet (1h)', price: 50, reduced_price: 0 },
+        { name: 'Modelage corps complet + cuir chevelu (1h30)', price: 65, reduced_price: 0 },
+      ],
+    },
+    {
+      category: 'Soins du visage',
+      priceAnchor: 'soin-visage',
+      items: [
+        { name: 'Hydratation (45min)', price: 40, reduced_price: 0 },
+        { name: 'Nettoyage en profondeur (1h)', price: 58, reduced_price: 0 },
+        { name: 'Traitement anti-âge (1h15)', price: 62, reduced_price: 0 },
+      ],
+    }
+    // ... other categories for column 1
+  ],
+  column_2: [
+    {
+      category: 'Beauté du regard',
+      priceAnchor: 'beaute-regard',
+      items: [
+        { name: 'Rehaussement de cils (45min)', price: 41, reduced_price: 0 },
+        { name: 'Teinture cils (20min)', price: 12, reduced_price: 0 },
+        { name: 'Teinture sourcils (20min)', price: 12, reduced_price: 0 },
+      ],
+    },
+    {
+      category: 'Maquillages',
+      priceAnchor: 'maquillage',
+      items: [
+        { name: 'Maquillage flash (20min)', price: 15, reduced_price: 0 },
+        { name: 'Maquillage jour (30min)', price: 25, reduced_price: 0 },
+        { name: 'Maquillage soir (45min/1h)', price: 35, reduced_price: 0 },
+        { name: 'Maquillage mariée (1h)', price: 45, reduced_price: 0 },
+      ],
+    },
+    {
+      category: 'Beauté mains / pieds',
+      priceAnchor: 'beaute-mains-pieds',
+      items: [
+        { name: 'Manucure / Pédicure express (30min)\nPréparation d\'ongles, gommage, crème', price: 30, reduced_price: 0 },
+        { name: 'Manucure / Pédicure complète (1h)\nPréparation d\'ongles, gommage, modelage, masque hydratant', price: 43, reduced_price: 0 },
+        { name: 'Pose de vernis classique seule (15min)', price: 10, reduced_price: 0 },
+        { name: 'Préparation d\'ongles + pose de vernis classique (30min)', price: 15, reduced_price: 0 },
+      ],
+    },
+    {
+      category: 'Semi-permanent',
+      priceAnchor: 'onglerie',
+      items: [
+        { name: 'Semi-permanent mains (1h)', price: 30, reduced_price: 0 },
+        { name: 'Semi-permanent pieds (45min)', price: 25, reduced_price: 0 },
+        { name: 'Semi-permanent mains et pieds (2h)', price: 50, reduced_price: 0 },
+        { name: 'Dépose semi-permanent (20min)', price: 15, reduced_price: 0 },
+      ],
+    },
+    {
+      category: 'Pose gel',
+      items: [
+        { name: 'Chablon + gel couleur (2h)', price: 50, reduced_price: 0 },
+        { name: 'Capsules américaines avec gel couleur (1h30)', price: 45, reduced_price: 0 },
+        { name: 'Remplissage gel chablon (1h15)', price: 32, reduced_price: 0 },
+        { name: 'Dépose gel (45min)', price: 17, reduced_price: 0 },
+        { name: 'Dépose capsules américaines (30min)', price: 13, reduced_price: 0 },
+      ],
+    },
+    {
+      category: 'Nail art',
+      items: [
+        { name: 'French 10 ongles', price: '+10€', reduced_price: 0 },
+        { name: 'French / ongle', price: '+1€', reduced_price: 0 },
+        { name: 'Baby-boomer 10 ongles', price: '+10€', reduced_price: 0 },
+        { name: 'Baby-boomer / ongle', price: '+1€', reduced_price: 0 },
+        { name: 'Paillettes & strass', price: 'Sur devis', reduced_price: 0 },
+        { name: 'Nail art simple', price: '+2€/doigt', reduced_price: 0 },
+        { name: 'Nail art complexe', price: 'Sur devis', reduced_price: 0 },
+        { name: 'Ongle cassé < 1 semaine', price: 'Gratuit', reduced_price: 0 },
+        { name: 'Ongle cassé > 1 semaine', price: '+2€/doigt', reduced_price: '+1€/doigt' },
+      ],
+    }
+    // ... other categories for column 2
+  ],
+})
+
+const scrollToPrice = (pricesAnchor) => {
+  const element = document.getElementById(pricesAnchor)
+  if (element) {
+    element.scrollIntoView({ 
+      behavior: 'smooth', 
+      block: 'start',
+      inline: 'nearest'
+    })
+    
+    // Add pulse animation after scrolling
+    setTimeout(() => {
+      element.classList.add('pulse-highlight')
+      setTimeout(() => {
+        element.classList.remove('pulse-highlight')
+      }, 2000)
+    }, 500)
+  }
+}
+
+// Helper functions for processing price data
+const formatPrice = (price) => {
+  return typeof price === 'number' ? `${price}€` : price
+}
+
+const calculateDiscountPercentage = (originalPrice, reducedPrice) => {
+  if (typeof originalPrice !== 'number' || typeof reducedPrice !== 'number') return 0
+  if (reducedPrice <= 0 || reducedPrice >= originalPrice) return 0
+  return Math.round(((originalPrice - reducedPrice) / originalPrice) * 100)
+}
+
+const processItem = (item) => {
+  const hasDiscount = item.reduced_price &&
+                      (
+                        typeof item.reduced_price === 'number' &&
+                        item.reduced_price > 0 &&
+                        item.reduced_price < item.price
+                      ) ||
+                      typeof item.reduced_price === 'string'
+                      
+
+  return {
+    ...item,
+    hasDiscount,
+    displayPrice: hasDiscount ? formatPrice(item.reduced_price) : formatPrice(item.price),
+    originalPriceFormatted: formatPrice(item.price),
+    discountPercentage: hasDiscount ? calculateDiscountPercentage(item.price, item.reduced_price) : 0
+  }
+}
+
+// Computed property that processes all prices once
+const processedPrices = computed(() => ({
+  column_1: prices.value.column_1.map(category => ({
+    ...category,
+    items: category.items.map(processItem)
+  })),
+  column_2: prices.value.column_2.map(category => ({
+    ...category,
+    items: category.items.map(processItem)
+  }))
+}))
 </script>
 
 <template>
@@ -56,7 +264,8 @@ const services = ref([
         <div
           v-for="service in services"
           :key="service.title"
-          class="service-card"
+          class="service-card cursor-pointer hover:scale-105 transition-transform duration-300"
+          @click="scrollToPrice(service.pricesAnchor)"
         >
           <img
             :src="service.image"
@@ -188,161 +397,37 @@ const services = ref([
       <div class="grid md:grid-cols-2 gap-8">
         <!-- Column 1 -->
         <div class="space-y-8">
-          <!-- Epilations visage -->
-          <div class="price-table">
+          <div
+            v-for="column in processedPrices.column_1"
+            :id="column.priceAnchor || null"
+            :key="column.category"
+            class="price-table"
+          >
             <h3 class="text-xl font-bold mb-4 border-b-2 border-pink-medium pb-2">
-              Épilations visage
+              {{ column.category }}
             </h3>
-            <ul class="space-y-2">
-              <li class="flex justify-between">
-                <span>• Création ligne sourcils (20min)</span><span class="font-semibold">11€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Sourcils entretien (15min)</span><span class="font-semibold">9€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Lèvres (15min)</span><span class="font-semibold">8€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Menton (15min)</span><span class="font-semibold">8€</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Forfaits epilations visage -->
-          <div class="price-table">
-            <h3 class="text-xl font-bold mb-4 border-b-2 border-pink-medium pb-2">
-              Forfaits épilations visage
-            </h3>
-            <ul class="space-y-2">
-              <li class="flex justify-between">
-                <span>• Sourcils + lèvres (25min)</span><span class="font-semibold">15€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Visage complet (30min)</span><span class="font-semibold">22€</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Epilations zone unique corps -->
-          <div class="price-table">
-            <h3 class="text-xl font-bold mb-4 border-b-2 border-pink-medium pb-2">
-              Épilations zone unique corps
-            </h3>
-            <ul class="space-y-2">
-              <li class="flex justify-between">
-                <span>• Demi-bras (20min)</span><span class="font-semibold">14€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Bras entiers (30min)</span><span class="font-semibold">17€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Aisselles (15min)</span><span class="font-semibold">10€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Demi-jambes (20min)</span><span class="font-semibold">17€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Jambes (35min)</span><span class="font-semibold">21€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Jambe complètes (30min)</span><span class="font-semibold">25€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Cuisses (30min)</span><span class="font-semibold">19€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Maillot classique (15min)</span><span class="font-semibold">10€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Maillot brésilien/échancré (20min)</span><span class="font-semibold">15€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Maillot semi-intégral (25min)</span><span class="font-semibold">23€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Maillot intégral (30min)</span><span class="font-semibold">25€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Interfessier (10min)</span><span class="font-semibold">7€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Fesses (20min)</span><span class="font-semibold">12€</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Forfaits epilations corps -->
-          <div class="price-table">
-            <h3 class="text-xl font-bold mb-4 border-b-2 border-pink-medium pb-2">
-              Forfaits épilations corps
-            </h3>
-            <ul class="space-y-2">
-              <li class="flex justify-between">
-                <span>• ½ jambes + maillot classique ou aisselles (30min)</span><span class="font-semibold">22€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• ½ jambes + maillot classique + aisselles (45min)</span><span class="font-semibold">31€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• ½ jambes + maillot brésilien/échancré + aisselles (45min)</span><span class="font-semibold">39€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• ½ jambes + maillot semi-intégral + aisselles (1h)</span><span class="font-semibold">44€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• ½ jambes + maillot intégral + aisselles (1h)</span><span class="font-semibold">46€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Jambes complètes + maillot classique ou aisselles (45min)</span><span class="font-semibold">31€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Jambes complètes + maillot classique + aisselles (1h)</span><span class="font-semibold">37€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Jambes complètes + maillot brésilien/échancré + aisselles (1h)</span><span class="font-semibold">46€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Jambes complètes + maillot semi-intégral + aisselles (1h15)</span><span class="font-semibold">51€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Jambes complètes + maillot intégral + aisselles (1h15)</span><span class="font-semibold">55€</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Massages corps -->
-          <div class="price-table">
-            <h3 class="text-xl font-bold mb-4 border-b-2 border-pink-medium pb-2">
-              Massages corps
-            </h3>
-            <ul class="space-y-2">
-              <li class="flex justify-between">
-                <span>• Modelage ciblé 1 zone (30min)</span><span class="font-semibold">30€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Modelage ciblé 2 zones ou corps complet (1h)</span><span class="font-semibold">50€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Modelage corps complet + cuir chevelu (1h30)</span><span class="font-semibold">65€</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Soins du visage -->
-          <div class="price-table">
-            <h3 class="text-xl font-bold mb-4 border-b-2 border-pink-medium pb-2">
-              Soins du visage
-            </h3>
-            <ul class="space-y-2">
-              <li class="flex justify-between">
-                <span>• Hydratation (45min)</span><span class="font-semibold">40€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Nettoyage en profondeur (1h)</span><span class="font-semibold">58€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Traitement anti-âge (1h15)</span><span class="font-semibold">62€</span>
+            <ul class="space-y-1.5">
+              <li
+                v-for="item in column.items"
+                :key="item.name"
+                class="flex justify-between items-center gap-3 min-h-[32px]"
+              >
+                <span class="flex-1 leading-snug">• {{ item.name }}</span>
+                <span class="flex-shrink-0 flex items-center gap-2">
+                  <template v-if="item.hasDiscount">
+                    <div
+                      v-if="item.discountPercentage > 0"
+                      class="badge badge-xs badge-error gap-1 font-semibold"
+                    >
+                      -{{ item.discountPercentage }}%
+                    </div>
+                    <span class="text-xs line-through text-gray-400">{{ item.originalPriceFormatted }}</span>
+                    <span class="text-base font-bold text-pink-600 min-w-[50px] text-right">{{ item.displayPrice }}</span>
+                  </template>
+                  <template v-else>
+                    <span class="text-base font-semibold text-gray-700 min-w-[50px] inline-block text-right">{{ item.displayPrice }}</span>
+                  </template>
+                </span>
               </li>
             </ul>
           </div>
@@ -350,152 +435,39 @@ const services = ref([
 
         <!-- Column 2 -->
         <div class="space-y-8">
-          <!-- Beaute du regard -->
-          <div class="price-table">
+          <div
+            v-for="column in processedPrices.column_2"
+            :id="column.priceAnchor || null"
+            :key="column.category"
+            class="price-table"
+          >
             <h3 class="text-xl font-bold mb-4 border-b-2 border-pink-medium pb-2">
-              Beauté du regard
+              {{ column.category }}
             </h3>
-            <ul class="space-y-2">
-              <li class="flex justify-between">
-                <span>• Rehaussement de cils (45min)</span><span class="font-semibold">41€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Teinture cils (20min)</span><span class="font-semibold">12€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Teinture sourcils (20min)</span><span class="font-semibold">12€</span>
+            <ul class="space-y-1.5">
+              <li
+                v-for="item in column.items"
+                :key="item.name"
+                class="flex justify-between items-center gap-3 min-h-[32px]"
+              >
+                <span class="flex-1 leading-snug">• {{ item.name }}</span>
+                <span class="flex-shrink-0 flex items-center gap-2">
+                  <template v-if="item.hasDiscount">
+                    <div
+                      v-if="item.discountPercentage > 0"
+                      class="badge badge-xs badge-error gap-1 font-semibold"
+                    >
+                      -{{ item.discountPercentage }}%
+                    </div>
+                    <span class="text-xs line-through text-gray-400">{{ item.originalPriceFormatted }}</span>
+                    <span class="text-base font-bold text-pink-600 min-w-[50px] text-right">{{ item.displayPrice }}</span>
+                  </template>
+                  <template v-else>
+                    <span class="text-base font-semibold text-gray-700 min-w-[50px] inline-block text-right">{{ item.displayPrice }}</span>
+                  </template>
+                </span>
               </li>
             </ul>
-          </div>
-
-          <!-- Maquillages -->
-          <div class="price-table">
-            <h3 class="text-xl font-bold mb-4 border-b-2 border-pink-medium pb-2">
-              Maquillages
-            </h3>
-            <ul class="space-y-2">
-              <li class="flex justify-between">
-                <span>• Maquillage flash (20min)</span><span class="font-semibold">15€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Maquillage jour (30min)</span><span class="font-semibold">25€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Maquillage soir (45min/1h)</span><span class="font-semibold">35€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Maquillage mariée (1h)</span><span class="font-semibold">45€</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Beaute mains/pieds -->
-          <div class="price-table">
-            <h3 class="text-xl font-bold mb-4 border-b-2 border-pink-medium pb-2">
-              Beauté mains / pieds
-            </h3>
-            <ul class="space-y-2">
-              <li class="flex justify-between">
-                <span>• Manucure / Pédicure express (30min)<br>
-                  <small class="text-gray-600">Préparation d'ongles, gommage, crème</small></span>
-                <span class="font-semibold">30€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Manucure / Pédicure complète (1h)<br>
-                  <small class="text-gray-600">Préparation d'ongles, gommage, modelage, masque hydratant</small></span>
-                <span class="font-semibold">43€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Pose de vernis classique seule (15min)</span><span class="font-semibold">10€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Préparation d'ongles + pose de vernis classique (30min)</span><span class="font-semibold">15€</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Semi-permanent -->
-          <div class="price-table">
-            <h3 class="text-xl font-bold mb-4 border-b-2 border-pink-medium pb-2">
-              Semi-permanent
-            </h3>
-            <ul class="space-y-2">
-              <li class="flex justify-between">
-                <span>• Semi-permanent mains (1h)</span><span class="font-semibold">30€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Semi-permanent pieds (45min)</span><span class="font-semibold">25€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Semi-permanent mains et pieds (2h)</span><span class="font-semibold">50€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Dépose semi-permanent (20min)</span><span class="font-semibold">15€</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Pose gel -->
-          <div class="price-table">
-            <h3 class="text-xl font-bold mb-4 border-b-2 border-pink-medium pb-2">
-              Pose gel
-            </h3>
-            <ul class="space-y-2">
-              <li class="flex justify-between">
-                <span>• Chablon + gel couleur (2h)</span><span class="font-semibold">50€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Capsules américaines avec gel couleur (1h30)</span><span class="font-semibold">45€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Remplissage gel chablon (1h15)</span><span class="font-semibold">32€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Dépose gel (45min)</span><span class="font-semibold">17€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Dépose capsules américaines (30min)</span><span class="font-semibold">13€</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Nail art -->
-          <div class="price-table">
-            <h3 class="text-xl font-bold mb-4 border-b-2 border-pink-medium pb-2">
-              Nail art
-            </h3>
-            <ul class="space-y-2">
-              <li class="flex justify-between">
-                <span>• French 10 ongles</span><span class="font-semibold">+10€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• French / ongle</span><span class="font-semibold">+1€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Baby-boomer 10 ongles</span><span class="font-semibold">+10€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Baby-boomer / ongle</span><span class="font-semibold">+1€</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Paillettes & strass</span><span class="font-semibold">Sur devis</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Nail art simple</span><span class="font-semibold">+2€/doigt</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Nail art complexe</span><span class="font-semibold">Sur devis</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Ongle cassé &lt; 1 semaine</span><span class="font-semibold">Gratuit</span>
-              </li>
-              <li class="flex justify-between">
-                <span>• Ongle cassé &gt; 1 semaine</span><span class="font-semibold">+2€/doigt</span>
-              </li>
-            </ul>
-            <p class="text-sm text-center italic mt-4">
-              Nail art sur devis, envoyer en photo pour définir le prix
-            </p>
           </div>
         </div>
       </div>
@@ -548,5 +520,34 @@ const services = ref([
 </template>
 
 <style scoped>
+@keyframes pulse-highlight {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.7);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px 10px rgba(236, 72, 153, 0.3);
+  }
+}
 
+.pulse-highlight {
+  animation: pulse-highlight 1s ease-in-out 2;
+}
+
+.price-table {
+  @apply bg-white rounded-lg shadow-md p-6 transition-shadow duration-300;
+}
+
+.price-table:hover {
+  @apply shadow-lg;
+}
+
+.price-table ul li {
+  @apply transition-colors duration-200 rounded-md p-2 -mx-2;
+}
+
+.price-table ul li:hover {
+  @apply bg-pink-50;
+}
 </style>
