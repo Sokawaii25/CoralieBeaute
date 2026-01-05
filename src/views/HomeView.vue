@@ -54,8 +54,8 @@ const prices = ref({
       category: 'Épilations visage',
       priceAnchor: 'epilation-visage-corps',
       items: [
-        { name: 'Création ligne sourcils (20min)', price: 11, reduced_price: 8 },
-        { name: 'Sourcils entretien (15min)', price: 9, reduced_price: 'Gratuit !' },
+        { name: 'Création ligne sourcils (20min)', price: 11, reduced_price: 0 },
+        { name: 'Sourcils entretien (15min)', price: 9, reduced_price: 0 },
         { name: 'Lèvres (15min)', price: 8, reduced_price: 0 },
         { name: 'Menton (15min)', price: 8, reduced_price: 0 },
       ],
@@ -69,6 +69,9 @@ const prices = ref({
     },
     {
       category: 'Épilations zone unique corps',
+      promoItems: [
+        { name: '1 épilation corps réalisée = 1 épilation visage offerte !', price: 'Promotion', reduced_price: 0 },
+      ],
       items: [
         { name: 'Demi-bras (20min)', price: 14, reduced_price: 0 },
         { name: 'Bras entiers (30min)', price: 17, reduced_price: 0 },
@@ -103,6 +106,9 @@ const prices = ref({
     {
       category: 'Massages corps',
       priceAnchor: 'massage-corps',
+      promoItems: [
+        { name: '1 massage corps 30min = 1 massage de cuir chevelu 10min offert !', price: 'Promotion', reduced_price: 0 },
+      ],
       items: [
         { name: 'Modelage ciblé 1 zone (30min)', price: 30, reduced_price: 0 },
         { name: 'Modelage ciblé 2 zones ou corps complet (1h)', price: 50, reduced_price: 0 },
@@ -143,6 +149,9 @@ const prices = ref({
     {
       category: 'Beauté mains / pieds',
       priceAnchor: 'beaute-mains-pieds',
+      promoItems: [
+        { name: '1 pose de vernis classique réalisée = 1 massage des mains offert !', price: 'Promotion', reduced_price: 0 },
+      ],
       items: [
         { name: 'Manucure / Pédicure express (30min)\nPréparation d\'ongles, gommage, crème', price: 30, reduced_price: 0 },
         { name: 'Manucure / Pédicure complète (1h)\nPréparation d\'ongles, gommage, modelage, masque hydratant', price: 43, reduced_price: 0 },
@@ -154,8 +163,8 @@ const prices = ref({
       category: 'Semi-permanent',
       priceAnchor: 'onglerie',
       items: [
-        { name: 'Semi-permanent mains (1h)', price: 30, reduced_price: 0 },
-        { name: 'Semi-permanent pieds (45min)', price: 25, reduced_price: 0 },
+        { name: 'Semi-permanent mains (1h)', price: 30, reduced_price: 25 },
+        { name: 'Semi-permanent pieds (45min)', price: 25, reduced_price: 20 },
         { name: 'Semi-permanent mains et pieds (2h)', price: 50, reduced_price: 0 },
         { name: 'Dépose semi-permanent (20min)', price: 15, reduced_price: 0 },
       ],
@@ -181,7 +190,7 @@ const prices = ref({
         { name: 'Nail art simple', price: '+2€/doigt', reduced_price: 0 },
         { name: 'Nail art complexe', price: 'Sur devis', reduced_price: 0 },
         { name: 'Ongle cassé < 1 semaine', price: 'Gratuit', reduced_price: 0 },
-        { name: 'Ongle cassé > 1 semaine', price: '+2€/doigt', reduced_price: '+1€/doigt' },
+        { name: 'Ongle cassé > 1 semaine', price: '+2€/doigt', reduced_price: 0 },
       ],
     }
     // ... other categories for column 2
@@ -408,9 +417,20 @@ const processedPrices = computed(() => ({
             </h3>
             <ul class="space-y-1.5">
               <li
+                v-for="promoItem in column.promoItems || []"
+                :key="promoItem.name"
+                class="flex justify-between items-center gap-3 min-h-[32px] font-semibold text-pink-600 promo-highlight"
+              >
+                <span class="flex-1 leading-snug">• {{ promoItem.name }}</span>
+                <span class="flex-shrink-0 flex items-center gap-2">
+                  <span class="text-base font-bold min-w-[50px] text-right">{{ formatPrice(promoItem.price) }}</span>
+                </span>
+              </li>
+              <li
                 v-for="item in column.items"
                 :key="item.name"
                 class="flex justify-between items-center gap-3 min-h-[32px]"
+                :class="{ 'promo-highlight': item.hasDiscount }"
               >
                 <span class="flex-1 leading-snug">• {{ item.name }}</span>
                 <span class="flex-shrink-0 flex items-center gap-2">
@@ -446,9 +466,20 @@ const processedPrices = computed(() => ({
             </h3>
             <ul class="space-y-1.5">
               <li
+                v-for="promoItem in column.promoItems || []"
+                :key="promoItem.name"
+                class="flex justify-between items-center gap-3 min-h-[32px] font-semibold text-pink-600 promo-highlight"
+              >
+                <span class="flex-1 leading-snug">• {{ promoItem.name }}</span>
+                <span class="flex-shrink-0 flex items-center gap-2">
+                  <span class="text-base font-bold min-w-[50px] text-right">{{ formatPrice(promoItem.price) }}</span>
+                </span>
+              </li>
+              <li
                 v-for="item in column.items"
                 :key="item.name"
                 class="flex justify-between items-center gap-3 min-h-[32px]"
+                :class="{ 'promo-highlight': item.hasDiscount }"
               >
                 <span class="flex-1 leading-snug">• {{ item.name }}</span>
                 <span class="flex-shrink-0 flex items-center gap-2">
@@ -533,6 +564,20 @@ const processedPrices = computed(() => ({
 
 .pulse-highlight {
   animation: pulse-highlight 1s ease-in-out 2;
+}
+
+@keyframes blink-yellow {
+  0%, 100% {
+    background-color: rgba(254, 252, 232, 0.4);
+  }
+  50% {
+    background-color: rgba(254, 240, 138, 0.6);
+  }
+}
+
+.promo-highlight {
+  animation: blink-yellow 2s ease-in-out infinite;
+  border-radius: 0.375rem;
 }
 
 .price-table {
