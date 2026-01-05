@@ -11,7 +11,6 @@ export default defineConfig({
     },
   },
   server: {
-    allowedHosts: [
-    ],
+    allowedHosts: true,
   },
 })
