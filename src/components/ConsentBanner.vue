@@ -59,13 +59,13 @@ const declineTracking = () => {
           </div>
           <div class="flex gap-3 flex-shrink-0">
             <button
-              class="btn btn-outline btn-sm"
+              class="btn btn-outline btn-sm p-2"
               @click="declineTracking"
             >
               Refuser
             </button>
             <button
-              class="btn bg-pink-medium hover:bg-pink-dark text-white btn-sm"
+              class="btn bg-pink-medium hover:bg-pink-dark text-white btn-sm p-2"
               @click="acceptTracking"
             >
               Accepter

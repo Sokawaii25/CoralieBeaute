@@ -143,21 +143,30 @@ const updateConsent = (consent) => {
             Gérer vos préférences
           </h3>
           <p class="mb-3">
-            <strong>Statut actuel :</strong> 
-            <span v-if="currentConsent === 'true'" class="text-green-600 font-semibold">✓ Accepté</span>
-            <span v-else-if="currentConsent === 'false'" class="text-red-600 font-semibold">✗ Refusé</span>
-            <span v-else class="text-gray-600 font-semibold">Pas encore défini</span>
+            <strong>Statut actuel : </strong> 
+            <span
+              v-if="currentConsent === 'true'"
+              class="text-green-600 font-semibold"
+            >✓ Accepté</span>
+            <span
+              v-else-if="currentConsent === 'false'"
+              class="text-red-600 font-semibold"
+            >✗ Refusé</span>
+            <span
+              v-else
+              class="text-gray-600 font-semibold"
+            >Pas encore défini</span>
           </p>
           
           <div class="flex gap-3">
             <button
-              class="btn bg-pink-medium hover:bg-pink-dark text-white btn-sm"
+              class="btn bg-pink-medium hover:bg-pink-dark text-white btn-sm p-2"
               @click="updateConsent(true)"
             >
               Accepter le suivi
             </button>
             <button
-              class="btn btn-outline btn-sm"
+              class="btn btn-outline btn-sm p-2"
               @click="updateConsent(false)"
             >
               Refuser le suivi
