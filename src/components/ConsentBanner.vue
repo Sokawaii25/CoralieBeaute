@@ -46,26 +46,26 @@ const declineTracking = () => {
       v-if="showBanner"
       class="fixed bottom-0 left-0 right-0 bg-white shadow-2xl border-t-4 border-pink-medium z-50"
     >
-      <div class="container mx-auto px-4 py-6">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="max-w-7xl mx-auto px-3 sm:px-4 py-4 sm:py-6">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4">
           <div class="flex-1 text-center md:text-left">
-            <h3 class="text-lg font-bold mb-2">
+            <h3 class="text-base sm:text-lg font-bold mb-2">
               🍪 Respect de votre vie privée
             </h3>
-            <p class="text-gray-700">
-              Nous utilisons Matomo pour analyser l'utilisation de notre site et améliorer votre expérience. 
+            <p class="text-sm sm:text-base text-gray-700">
+              Nous utilisons Matomo pour améliorer votre expérience (suivi statistique). 
               Vos données restent anonymes et ne sont jamais partagées avec des tiers.
             </p>
           </div>
-          <div class="flex gap-3 flex-shrink-0">
+          <div class="flex gap-2 sm:gap-3 flex-shrink-0">
             <button
-              class="btn btn-outline btn-sm p-2"
+              class="btn btn-outline btn-sm px-3 py-2 text-xs sm:text-sm"
               @click="declineTracking"
             >
               Refuser
             </button>
             <button
-              class="btn bg-pink-medium hover:bg-pink-dark text-white btn-sm p-2"
+              class="btn bg-pink-medium hover:bg-pink-dark text-white btn-sm px-3 py-2 text-xs sm:text-sm"
               @click="acceptTracking"
             >
               Accepter
