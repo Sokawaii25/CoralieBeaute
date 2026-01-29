@@ -70,7 +70,7 @@ const prices = ref({
     {
       category: 'Épilations zone unique corps',
       promoItems: [
-        { name: '1 épilation corps réalisée = 1 épilation visage offerte !', price: 'Promotion', reduced_price: 0 },
+        { name: '1 épilation corps réalisée = 1 épilation visage offerte !', price: 'Promotion', reduced_price: 0, endDate: '16/04/2026' },
       ],
       items: [
         { name: 'Demi-bras (20min)', price: 14, reduced_price: 0 },
@@ -107,7 +107,7 @@ const prices = ref({
       category: 'Massages corps',
       priceAnchor: 'massage-corps',
       promoItems: [
-        { name: '1 massage corps 30min = 1 massage de cuir chevelu 10min offert !', price: 'Promotion', reduced_price: 0 },
+        { name: '1 massage corps 30min = 1 massage de cuir chevelu 10min offert !', price: 'Promotion', reduced_price: 0, endDate: '16/04/2026' },
       ],
       items: [
         { name: 'Modelage ciblé 1 zone (30min)', price: 30, reduced_price: 0 },
@@ -150,7 +150,7 @@ const prices = ref({
       category: 'Beauté mains / pieds',
       priceAnchor: 'beaute-mains-pieds',
       promoItems: [
-        { name: '1 pose de vernis classique réalisée = 1 massage des mains offert !', price: 'Promotion', reduced_price: 0 },
+        { name: '1 pose de vernis classique = 1 massage des mains offert !', price: 'Promotion', reduced_price: 0, endDate: '16/04/2026' },
       ],
       items: [
         { name: 'Manucure / Pédicure express (30min)\nPréparation d\'ongles, gommage, crème', price: 30, reduced_price: 0 },
@@ -163,8 +163,8 @@ const prices = ref({
       category: 'Semi-permanent',
       priceAnchor: 'onglerie',
       items: [
-        { name: 'Semi-permanent mains (1h)', price: 30, reduced_price: 25 },
-        { name: 'Semi-permanent pieds (45min)', price: 25, reduced_price: 20 },
+        { name: 'Semi-permanent mains (1h)', price: 30, reduced_price: 25, endDate: '16/04/2026' },
+        { name: 'Semi-permanent pieds (45min)', price: 25, reduced_price: 20, endDate: '16/04/2026' },
         { name: 'Semi-permanent mains et pieds (2h)', price: 50, reduced_price: 0 },
         { name: 'Dépose semi-permanent (20min)', price: 15, reduced_price: 0 },
       ],
@@ -423,6 +423,12 @@ const processedPrices = computed(() => ({
               >
                 <span class="flex-1 leading-snug">• {{ promoItem.name }}</span>
                 <span class="flex-shrink-0 flex items-center gap-2">
+                  <span
+                    v-if="promoItem.endDate"
+                    class="text-xs text-gray-500 italic"
+                  >
+                    jusqu'au {{ promoItem.endDate }}
+                  </span>
                   <span class="text-base font-bold min-w-[50px] text-right">{{ formatPrice(promoItem.price) }}</span>
                 </span>
               </li>
@@ -435,6 +441,12 @@ const processedPrices = computed(() => ({
                 <span class="flex-1 leading-snug">• {{ item.name }}</span>
                 <span class="flex-shrink-0 flex items-center gap-2">
                   <template v-if="item.hasDiscount">
+                    <span
+                      v-if="item.endDate"
+                      class="text-xs text-gray-500 italic"
+                    >
+                      jusqu'au {{ item.endDate }}
+                    </span>
                     <div
                       v-if="item.discountPercentage > 0"
                       class="badge badge-xs badge-error gap-1 font-semibold"
@@ -472,6 +484,12 @@ const processedPrices = computed(() => ({
               >
                 <span class="flex-1 leading-snug">• {{ promoItem.name }}</span>
                 <span class="flex-shrink-0 flex items-center gap-2">
+                  <span
+                    v-if="promoItem.endDate"
+                    class="text-xs text-gray-500 italic"
+                  >
+                    jusqu'au {{ promoItem.endDate }}
+                  </span>
                   <span class="text-base font-bold min-w-[50px] text-right">{{ formatPrice(promoItem.price) }}</span>
                 </span>
               </li>
@@ -484,6 +502,12 @@ const processedPrices = computed(() => ({
                 <span class="flex-1 leading-snug">• {{ item.name }}</span>
                 <span class="flex-shrink-0 flex items-center gap-2">
                   <template v-if="item.hasDiscount">
+                    <span
+                      v-if="item.endDate"
+                      class="text-xs text-gray-500 italic"
+                    >
+                      jusqu'au {{ item.endDate }}
+                    </span>
                     <div
                       v-if="item.discountPercentage > 0"
                       class="badge badge-xs badge-error gap-1 font-semibold"
