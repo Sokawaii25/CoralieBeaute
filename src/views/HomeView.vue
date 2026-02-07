@@ -173,11 +173,16 @@ const prices = ref({
       category: 'Pose gel',
       items: [
         { name: 'Chablon + gel couleur (2h)', price: 50, reduced_price: 0 },
-        { name: 'Capsules américaines avec gel couleur (1h30)', price: 45, reduced_price: 0 },
         { name: 'Remplissage gel chablon (1h15)', price: 32, reduced_price: 0 },
         { name: 'Dépose gel (45min)', price: 17, reduced_price: 0 },
-        { name: 'Dépose capsules américaines (30min)', price: 13, reduced_price: 0 },
       ],
+    },
+    {
+      category: 'Pose capsules américaines',
+      items: [
+        { name: 'Capsules américaines (1h15)', price: 40, reduced_price: 0 },
+        { name: 'Dépose capsules américaines (30min)', price: 13, reduced_price: 0 },
+      ]
     },
     {
       category: 'Nail art',
